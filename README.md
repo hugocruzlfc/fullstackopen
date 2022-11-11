@@ -1,0 +1,3 @@
+# fullstackopen
+
+firsts two exercises 
