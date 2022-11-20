@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function AddForm({ handleSubmit, handleName, handleNumber }) {
+export default function AddForm({
+  handleSubmit,
+  handleChange,
+  personRegister,
+}) {
   return (
     <>
       <div>
@@ -11,18 +15,20 @@ export default function AddForm({ handleSubmit, handleName, handleNumber }) {
           name:{" "}
           <input
             type="text"
-            onChange={handleName}
             placeholder="Write a name..."
-            // value={newName}
+            name="name"
+            onChange={handleChange}
+            value={personRegister.name}
           />
         </div>
         <div>
           number:{" "}
           <input
             type="text"
-            onChange={handleNumber}
             placeholder="Write a number..."
-            // value={newNumber}
+            name="number"
+            onChange={handleChange}
+            value={personRegister.number}
           />
         </div>
         <div>
