@@ -106,7 +106,6 @@ const App = () => {
       directoryService
         .create(personRegister)
         .then((person) => {
-          // setNotes(notes.concat(response.data));
           setPersons([...persons, person]);
           setPersonRegister(INITIAL_STATE);
           setErrorMessage(`Added ${person.name}`);
@@ -117,7 +116,7 @@ const App = () => {
         })
         .catch((err) => {
           console.log(err);
-          setErrorMessage(err.message);
+          setErrorMessage(err.response.data.error);
           setTypeNotification(TYPENOTIFICATION.error);
           setTimeout(() => {
             setErrorMessage(null);

@@ -1,0 +1,8 @@
+deploy Heroku
+Cree una aplicación Heroku con el comando heroku create, envíe su código al repositorio y muévalo a Heroku con el comando git push heroku main.
+
+NB Si está implementando desde un repositorio git donde su código no está en la rama principal (es decir, si está alterando el repositorio de notas de la última lección), deberá ejecutar git push heroku HEAD:master. Si ya ha hecho un push a heroku, es posible que deba ejecutar git push heroku HEAD:main --force.
+
+NB En Windows, los scripts npm se ejecutan en cmd.exe como el shell predeterminado que no admite comandos bash. Para que los comandos de bash anteriores funcionen, puede cambiar el shell predeterminado a Bash (en la instalación predeterminada de Git para Windows) de la siguiente manera:
+
+npm config set script-shell "C:\\Program Files\\git\\bin\\bash.exe"
