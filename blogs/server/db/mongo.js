@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-//const dotenv = require("dotenv");
 
 const { MONGODB_URI } = require("../utils/config");
 
-//dotenv.config();
 const url = MONGODB_URI;
 
 function mongoConnection() {

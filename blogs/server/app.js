@@ -2,15 +2,15 @@ const express = require("express");
 const cors = require("cors");
 require("express-async-errors");
 
-const notesRouter = require("./controllers/noteController");
-const usersRouter = require("./controllers/userController");
-const loginRouter = require("./controllers/loginController");
 const config = require("./utils/config");
+const app = express();
 const mongoConnection = require("./db/mongo");
 const middleware = require("./utils/middleware");
 const logger = require("./utils/logger");
 
-const app = express();
+const blogRouter = require("./controllers/blogController");
+const usersRouter = require("./controllers/userController");
+const loginRouter = require("./controllers/loginController");
 
 logger.info("connecting to", config.MONGODB_URI);
 mongoConnection();
@@ -20,7 +20,7 @@ app.use(express.static("build"));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use("/api/notes", notesRouter);
+app.use("/api/blogs", blogRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
 

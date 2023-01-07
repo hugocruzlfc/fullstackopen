@@ -2,9 +2,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-// eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
-// eslint-disable-next-line no-undef
 let MONGODB_URI = process.env.MONGODB_URI;
 
 if (process.env.NODE_ENV === "test") {
