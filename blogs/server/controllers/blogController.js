@@ -81,4 +81,22 @@ blogRouter.put("/:id", async (request, response) => {
   response.json(updatedBlog);
 });
 
+blogRouter.patch("/like/:id", async (request, response) => {
+  const token = getTokenFrom(request);
+  const decodedToken = jwt.verify(token, process.env.SECRET);
+  console.log(token);
+  console.log(decodedToken);
+  if (!token || !decodedToken.id) {
+    return response.status(401).json({ error: "token missing or invalid" });
+  }
+  const updatedBlog = await Blog.findByIdAndUpdate(
+    { _id: request.params.id },
+    {
+      $inc: { likes: 1 },
+    },
+    { new: true }
+  );
+  response.json(updatedBlog);
+});
+
 module.exports = blogRouter;
