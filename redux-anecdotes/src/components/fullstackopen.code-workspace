@@ -1,0 +1,81 @@
+{
+  "folders": [
+    {
+      "path": "../../.."
+    },
+    {
+      "name": "redux-anecdotes",
+      "path": "../.."
+    },
+    {
+      "name": "query-anecdotes",
+      "path": "../../../query-anecdotes"
+    },
+    {
+      "name": "countries",
+      "path": "../../../countries"
+    },
+    {
+      "name": "query-notes",
+      "path": "../../../query-notes"
+    },
+    {
+      "name": "exercises2",
+      "path": "../../../exercises2"
+    },
+    {
+      "name": "unicafe",
+      "path": "../../../exercise1/unicafe"
+    },
+    {
+      "name": "server",
+      "path": "../../../notes/server"
+    },
+    {
+      "name": "anecdotes",
+      "path": "../../../exercise1/anecdotes"
+    },
+    {
+      "name": "frontend",
+      "path": "../../../notes/frontend"
+    },
+    {
+      "name": "redux-notes",
+      "path": "../../../redux-notes"
+    },
+    {
+      "name": "server",
+      "path": "../../../telephone_directory/server"
+    },
+    {
+      "name": "frontend",
+      "path": "../../../telephone_directory/frontend"
+    },
+    {
+      "name": "unicafe-redux",
+      "path": "../../../unicafe-redux"
+    },
+    {
+      "name": "reducer-context",
+      "path": "../../../reducer-context"
+    },
+    {
+      "name": "server",
+      "path": "../../../blogs/server"
+    },
+    {
+      "name": "frontend",
+      "path": "../../../blogs/frontend"
+    }
+  ],
+  "settings": {
+    "jest.disabledWorkspaceFolders": [
+      "fullstackopen",
+      "countries",
+      "exercises2",
+      "unicafe",
+      "anecdotes",
+      "server"
+    ]
+  }
+}
