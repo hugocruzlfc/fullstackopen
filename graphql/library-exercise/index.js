@@ -10,6 +10,12 @@ let authors = [
     born: 1952,
   },
   {
+    name: "Stephen King",
+    id: "afa51ab0-344d-11e9-a414-719c6709ee3e",
+    born: 1950,
+  },
+
+  {
     name: "Martin Fowler",
     id: "afa5b6f0-344d-11e9-a414-719c6709cf3e",
     born: 1963,
@@ -166,7 +172,6 @@ const resolvers = {
       if (!currentAuthor) {
         const name = args.author;
         const newAuthor = { born: null, name: args.author, id: uuid() };
-        console.log(name);
         authors = authors.concat(newAuthor);
       }
       return newBook;

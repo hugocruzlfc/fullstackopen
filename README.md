@@ -18,3 +18,12 @@ npm install --save-dev eslint-plugin-security
 "extends": [
 "plugin:security/recommended"
 ]
+
+# add apollo and grphql in server
+
+@apollo/server
+graphql
+
+# add apollo client in react
+
+npm install @apollo/client graphql
