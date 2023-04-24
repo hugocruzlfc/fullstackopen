@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useSubscription, useApolloClient } from "@apollo/client";
 import { CREATE_PERSON, ALL_PERSONS } from "../queries";
 
 export default function PersonForm({ setError }) {
+  const client = useApolloClient();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
 
   const [createPerson] = useMutation(CREATE_PERSON, {
-    refetchQueries: [{ query: ALL_PERSONS }],
+    // refetchQueries: [{ query: ALL_PERSONS }],
     //   refetchQueries: [ { query: ALL_PERSONS }, { query: OTHER_QUERY }, { query: ... } ]   si quiero actulaziar varias queries
     onError: (error) => {
       const errors = error.graphQLErrors[0].message;
@@ -18,12 +19,45 @@ export default function PersonForm({ setError }) {
       //     .join("\n");
       setError(errors);
     },
+    update: (cache, response) => {
+      cache.updateQuery({ query: ALL_PERSONS }, ({ allPersons }) => {
+        return {
+          allPersons: allPersons.concat(response.data.addPerson),
+        };
+      });
+    },
+  });
+
+  const updateCacheWith = (addedPerson) => {
+    const includedIn = (set, object) =>
+      set.map((p) => p.id).includes(object.id);
+
+    const dataInStore = client.readQuery({ query: ALL_PERSONS });
+    if (!includedIn(dataInStore.allPersons, addedPerson)) {
+      client.writeQuery({
+        query: ALL_PERSONS,
+        data: { allPersons: dataInStore.allPersons.concat(addedPerson) },
+      });
+    }
+  };
+
+  useSubscription(CREATE_PERSON, {
+    onData: ({ data }) => {
+      console.log(data);
+    },
   });
 
   const submit = (event) => {
     event.preventDefault();
 
-    createPerson({ variables: { name, phone, street, city } });
+    createPerson({
+      variables: {
+        name,
+        phone: phone.length > 0 ? phone : undefined,
+        street,
+        city,
+      },
+    });
 
     setName("");
     setPhone("");
